@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types'
+
 const Tooltip = ({ anchorRef, textError, dirty }) => {
   if (!dirty) {
     return null
@@ -20,6 +22,18 @@ const Tooltip = ({ anchorRef, textError, dirty }) => {
       {textError}
     </div>
   )
+}
+
+Tooltip.propTypes = {
+  anchorRef: PropTypes.shape({ current: PropTypes.instanceOf(Element) }),
+  textError: PropTypes.string,
+  dirty: PropTypes.bool,
+}
+
+Tooltip.defaultProps = {
+  anchorRef: null,
+  textError: '',
+  dirty: false,
 }
 
 export default Tooltip
