@@ -1,8 +1,14 @@
+import './LoginPass.css'
+
+import { cn } from '@bem-react/classname'
+
 import useCheckValid from './hooks/useCheckValid'
 import Tooltip from './Tooltip/Tooltip'
 import checkValue from './utils/checkValue'
 
 const { useState, useRef } = require('react')
+
+const cnLoginPass = cn('LoginPass')
 
 const LoginPass = () => {
   const [dirty, setDirty] = useState(false)
@@ -51,7 +57,7 @@ const LoginPass = () => {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className={cnLoginPass()}>
       <label htmlFor="email">
         Ваш email
         <input
@@ -78,7 +84,9 @@ const LoginPass = () => {
         <Tooltip anchorRef={refPas} textError={useCheckPas} dirty={dirty} />
       </label>
 
-      <button type="submit">Войти</button>
+      <button type="submit" className={cnLoginPass('Button')}>
+        Войти
+      </button>
     </form>
   )
 }

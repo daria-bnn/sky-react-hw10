@@ -1,0 +1,13 @@
+.LoginPass {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  align-items: center;
+  padding-top: 32px;
+}
+
+.LoginPass-Button {
+  width: 120px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
