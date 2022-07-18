@@ -1,0 +1,48 @@
+.GenerateColor {
+  margin-top: 32px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+
+}
+
+.GenerateColor-ButtonWrapper {
+  display: flex;
+  justify-content: flex-end;
+  min-width: 100%;
+}
+
+.GenerateColor-Button {
+  margin-bottom: 16px;
+  padding: 16px 32px;
+
+  color: #fff;
+  font-size: 16px;
+
+  background-color: #2a52be;
+  border: 1px solid transparent;
+
+  transition: all 0.3s ease;
+}
+
+.GenerateColor-Button:hover {
+  color: #2a52be;
+
+  background-color: transparent;
+  border-color: #2a52be;
+  cursor: pointer;
+}
+
+.GenerateColor-ColorBlocks {
+  display: grid;
+  grid-auto-rows: 100px;
+  grid-template-columns: repeat(8, 100px);
+  gap: 10px;
+  justify-content: center;
+}
+
+.GenerateColor-ColorBlock {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
+}
