@@ -1,37 +1,31 @@
-import './LoginPass.css'
+import { useState, useRef } from 'react'
 
 import { cn } from '@bem-react/classname'
 
+import './LoginPass.css'
+
 import useCheckValid from './hooks/useCheckValid'
 import Tooltip from './Tooltip/Tooltip'
-import checkValue from './utils/checkValue'
 
-const { useState, useRef } = require('react')
+import checkValue from './utils/checkValue'
 
 const cnLoginPass = cn('LoginPass')
 
 const LoginPass = () => {
+  const FORM_INIT = { email: '', password: '' }
+
+  const RULES_EMAIL = { required: true, isValidEmail: true }
+  const RULES_PASSWORD = { required: true, minLength: 6 }
+
   const [dirty, setDirty] = useState(false)
 
-  const [form, setForm] = useState({
-    email: '',
-    password: '',
-  })
+  const [form, setForm] = useState(FORM_INIT)
 
   const refEmail = useRef(null)
   const refPas = useRef(null)
 
-  const useCheckEmail = useCheckValid(
-    form.email,
-    { isEmpty: true, isValidEmail: true },
-    dirty
-  )
-
-  const useCheckPas = useCheckValid(
-    form.password,
-    { isEmpty: true, isLength: 6 },
-    dirty
-  )
+  const useCheckEmail = useCheckValid(form.email, RULES_EMAIL, dirty)
+  const useCheckPas = useCheckValid(form.password, RULES_PASSWORD, dirty)
 
   const { email, password } = form
 
@@ -45,13 +39,11 @@ const LoginPass = () => {
     event.preventDefault()
     setDirty(true)
 
-    if (
-      checkValue(refEmail.current.value, { isEmpty: true, isValidEmail: true })
-    ) {
+    if (checkValue(refEmail.current.value, RULES_EMAIL)) {
       refEmail.current.focus()
     }
 
-    if (checkValue(refPas.current.value, { isEmpty: true, isLength: 6 })) {
+    if (checkValue(refPas.current.value, RULES_PASSWORD)) {
       refPas.current.focus()
     }
   }

@@ -4,7 +4,7 @@ const REG_EMAIL =
 const checkValue = (initValue, rules) => {
   let error = ''
 
-  if (!initValue && rules.isEmpty) {
+  if (!initValue && rules.required) {
     error = 'Поле не может быть пустым'
     return error
   }
@@ -14,8 +14,8 @@ const checkValue = (initValue, rules) => {
     return error
   }
 
-  if (rules.isLength && initValue.length < rules.isLength) {
-    error = `Поле должно содержать более ${rules.isLength} символов`
+  if (rules.minLength && initValue.length < rules.minLength) {
+    error = `Поле должно содержать более ${rules.minLength} символов`
     return error
   }
 
